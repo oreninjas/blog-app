@@ -18,4 +18,9 @@ app.post("/create/blog", async (req, res) => {
   })
 });
 
+app.get('/get/api', async (req, res) => {
+  const findBlogs = await blogModel.find().limit(25);
+  res.send(findBlogs)
+})
+
 app.listen(3000);
