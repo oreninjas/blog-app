@@ -14,13 +14,15 @@ app.post("/create/blog", async (req, res) => {
 
   const blogCreation = await blogModel.create({
     title: title,
-    description: description
-  })
+    description: description,
+  });
+
+  res.json(blogCreation);
 });
 
-app.get('/get/api', async (req, res) => {
+app.get("/get/api", async (req, res) => {
   const findBlogs = await blogModel.find().limit(25);
-  res.send(findBlogs)
-})
+  res.send(findBlogs);
+});
 
 app.listen(3000);
