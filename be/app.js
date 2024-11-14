@@ -20,9 +20,15 @@ app.post("/create/blog", async (req, res) => {
   res.json(blogCreation);
 });
 
-app.get("/get/api", async (req, res) => {
+app.get("/blogs", async (req, res) => {
   const findBlogs = await blogModel.find().limit(25);
-  res.send(findBlogs);
+  res.json(findBlogs);
 });
+
+app.get('/blogs/:blogid', async (req, res) => {
+  const { blogid } = req.params;
+  const blog = await blogModel.findById(blogid);
+  res.json(blog);
+})
 
 app.listen(3000);
